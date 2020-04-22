@@ -19,7 +19,9 @@ The different forms of authentication are called strategies in passport
 
 We will use username and password first: http://www.passportjs.org/docs/username-password/
 
+```
 $ npm install passport passport-local
+```
 
 ```
 // app.js
