@@ -49,7 +49,7 @@ router.post('/', (req, res, next) => {
 });
 
 // deletes the room
-// an admin can delete any room - a user can only delete can only 
+// an admin can delete any room - a user can only 
 // delete it when she is the owner
 router.get('/:roomId/', (req, res, next) => {
   const query = { _id: req.params.roomId };
@@ -58,6 +58,7 @@ router.get('/:roomId/', (req, res, next) => {
     query.owner = req.user._id;
   }
 
+  // that is the long version of what is happening
   // if user.role !== 'admin'
   // query: { _id: req.params.roomId, owner: req.user._id }
   // else if user.role === 'admin'

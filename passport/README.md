@@ -15,9 +15,7 @@ https://www.airpair.com/express/posts/expressjs-and-passportjs-sessions-deep-div
 
 The different forms of authentication are called strategies in passport
 
-```
 # Passport Local Strategy
-```
 
 We will use username and password first: http://www.passportjs.org/docs/username-password/
 
