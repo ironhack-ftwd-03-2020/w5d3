@@ -1,6 +1,7 @@
-Passport - authentication middleware for node js
+# Passport - authentication middleware for node js
 
-Good Explanation of (de)serialize in passport
+Good Explanation of (de)serialize in passport:
+
 https://stackoverflow.com/questions/27637609/understanding-passport-serialize-deserialize
 
 
@@ -8,11 +9,15 @@ Github Passport Strategy :
 
 https://github.com/jaredhanson/passport-github
 
-Deep explanation passport
+Passport explained in depth:
 
 https://www.airpair.com/express/posts/expressjs-and-passportjs-sessions-deep-dive 
 
 The different forms of authentication are called strategies in passport
+
+```
+# Passport Local Strategy
+```
 
 We will use username and password first: http://www.passportjs.org/docs/username-password/
 
