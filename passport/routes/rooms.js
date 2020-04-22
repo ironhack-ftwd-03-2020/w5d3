@@ -7,6 +7,7 @@ router.get('/add', (req, res) => {
 });
 
 router.get('/', (req, res, next) => {
+  // show all rooms
   Room.find()
     .then(rooms => {
       res.render('rooms/index', { roomsList: rooms });
@@ -14,6 +15,16 @@ router.get('/', (req, res, next) => {
     .catch(err => {
       next(err);
     });
+  // just show the rooms of the logged in user
+  /*
+  Room.find({ owner: req.user._id })
+    .then(rooms => {
+      res.render('rooms/index', { roomsList: rooms });
+    })
+    .catch(err => {
+      next(err);
+    });
+    */
 });
 
 router.post('/', (req, res, next) => {

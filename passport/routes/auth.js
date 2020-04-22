@@ -11,6 +11,16 @@ router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 
+router.get('/github', passport.authenticate('github'));
+
+router.get(
+  '/github/callback',
+  passport.authenticate('github', {
+    successRedirect: '/',
+    failureRedirect: '/auth/login'
+  })
+);
+
 router.get('/login', (req, res) => {
   res.render('auth/login', { errorMessage: req.flash('error') });
 });

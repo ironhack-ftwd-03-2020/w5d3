@@ -11,6 +11,9 @@ const path = require('path');
 const User = require('./models/User');
 const bcrypt = require('bcrypt');
 
+// require GithubStrategy from passport-github
+const GithubStrategy = require('passport-github').Strategy;
+
 // require passport and the local strategy
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
@@ -100,6 +103,35 @@ passport.use(
         done(err, false);
       });
   })
+);
+
+
+passport.use(
+  new GithubStrategy(
+    {
+      clientID: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
+      callbackURL: 'http://127.0.0.1:3000/auth/github/callback'
+    },
+    (accessToken, refreshToken, profile, done) => {
+      // find a user with profile.id as githubId or create one
+      User.findOne({ githubId: profile.id })
+        .then(found => {
+          if (found !== null) {
+            // user with that githubId already exists
+            done(null, found);
+          } else {
+            // no user with that githubId
+            return User.create({ githubId: profile.id }).then(dbUser => {
+              done(null, dbUser);
+            });
+          }
+        })
+        .catch(err => {
+          done(err);
+        });
+    }
+  )
 );
 
 
