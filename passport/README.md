@@ -193,6 +193,17 @@ Github secret
 ```
 $ npm install passport-github
 ```
+
+Add a field for the GitHub ID to the user model
+```
+// models/User.js
+const userSchema = new Schema({
+  username: String,
+  password: String,
+  githubId: String
+});
+```
+
 ```
 // app.js
 const GithubStrategy = require('passport-github').Strategy;
